@@ -1,5 +1,8 @@
 package datastructure;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+
 public class DataReader {
 
 	public static void main(String[] args) {
@@ -15,11 +18,22 @@ public class DataReader {
 		 * order from LinkedList and retrieve as FILO order from Stack.
 		 *
 		 * Demonstrate how to use Stack that includes push,peek,search,pop elements.
-		 * Use For Each loop/while loop/Iterator to retrieve data.
+		 * Use For Each loop/while loop/Iterator to retrieve data.;
 		 */
 
 		String textFile = System.getProperty("user.dir") + "/src/data/self-driving-car.txt";
 
+		S
+		BufferedReader buff = null;
+		String line;
+
+		try {
+			buff = new BufferedReader(textFile);
+		}
+		catch {
+
+
+		}
 
 
 	}

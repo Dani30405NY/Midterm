@@ -18,8 +18,15 @@ public static void main(String[] args) {
         map.put(5, "San Jose");
         map.put(6, "Seattle");
 
+        System.out.println(map);
+        System.out.println(map.get("Seattle"));
+        System.out.println(map.get("San Jose"));
+        System.out.println(map.get("Boston"));
+        System.out.println(map.get("Denver"));
+        System.out.println(map.get("LA"));
+        System.out.println(map.get("NYC"));
+        System.out.println(map.containsValue(4));
 
-
-    }
+        }
 
 }
