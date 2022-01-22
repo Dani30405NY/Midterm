@@ -1,8 +1,12 @@
 package design;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Scanner;
 
-public class EmployeeInfo {
+public class EmployeeInfo extends empAbstract {
 	
  /*This class can be implemented from Employee interface then add additional methods in EmployeeInfo class.
  * Also, Employee interface can be implemented into an abstract class.So create an Abstract class
@@ -20,8 +24,57 @@ public class EmployeeInfo {
 	/*
 	 * declare few static and final fields and some non-static fields
 	 */
-	static String companyName;
-	
+	 static String companyName;
+	 private String name;
+
+	 public static void setCompanyName(String companyName) {
+		 EmployeeInfo.companyName = companyName
+	 }
+
+	 public void setEmployeeID(int employeeID) {
+		 this.name = name;
+	 }
+
+	 public void setSalary(double salary) {
+		 this.salary = salary;
+	 }
+
+	 public void setCell(int cell) {
+		 this.cell = cell;
+
+	 }
+	 public void setIndustry(String industry) {
+		 this.industry = industry;
+	 }
+
+	 public static String getCompanyName () {
+		 return companyName;
+	 }
+
+	public String getName() {
+		return name;
+	}
+
+	public int getEmployeeId() {
+		return employeeId;
+	}
+
+	public double getSalary() {
+		return salary;
+	}
+
+	public String getCell() {
+		return Cell;
+	}
+
+	public String getIndustry() {
+		return Industry;
+	}
+	 private double salary;
+	 private int cell;
+	 private String industry;
+	 private String date_of_birth;
+
 	/*
 	 * You must implement the logic for below 2 methods and 
 	 * following 2 methods are prototype as well for other methods need to be design,
@@ -32,11 +85,14 @@ public class EmployeeInfo {
 	 * you must have multiple constructor.
 	 * Must implement below constructor.
 	 */
-	public EmployeeInfo(int employeeId){
-		
+	public EmployeeInfo(){
 	}
-    public EmployeeInfo(String name, int employeeId){
-		
+    public EmployeeInfo(int employeeId){
+		this.employeeId=employeeId;
+	}
+	public EmployeeInfo(String name, int employeeId) {
+		this.name=name;
+		this.employeeId=employeeId
 	}
 	
 	/*
@@ -47,91 +103,93 @@ public class EmployeeInfo {
 	 * So you probably need to send 2 arguments.
 	 * 
 	 */
-	public static int calculateEmployeeBonus(int numberOfYearsWithCompany){
+	public static int calculateEmployeeBonus(double salary, String performance){
 		int total=0;
-		return total;
-	}
-	
-	/*
-	 * This methods should calculate Employee Pension based on salary and numbers of years with the company.
-	 * Then it will return the total pension. So you need to implement the logic.
-	 * Hints: pension will be 5% of the salary for 1 year, 10% for 2 years with the company and so on.
-	 * 
-	 */
-	public static int calculateEmployeePension(){
-		int total=0;
-		Scanner sc  = new Scanner(System.in);
-		System.out.println("Please enter start date in format (example: May,2015): ");
-		String joiningDate = sc.nextLine();
-		System.out.println("Please enter today's date in format (example: August,2017): ");
-		String todaysDate = sc.nextLine();
-        String convertedJoiningDate = DateConversion.convertDate(joiningDate);
-        String convertedTodaysDate = DateConversion.convertDate(todaysDate);
-
-        //implement numbers of year from above two dates
-		//Calculate pension
-
-
-
-		return total;
-	}
-	private static class DateConversion {
-
-		public DateConversion(Months months){}
-		public static String convertDate(String date) {
-			String [] extractMonth = date.split(",");
-			String givenMonth = extractMonth[0];
-			int monthDate = whichMonth(givenMonth);
-			String actualDate = monthDate + "/" + extractMonth[1];
-			return actualDate;
+		if(performance =="best") {
+			total = (int) (salary * 0.1);
+		}else if(performance == "average") {
+			total = (int) (salary * 0.08);
+		}else if (performance == "bad") {
+			total = (int) (salary * 0.02);
 		}
 
-		public static int whichMonth(String givenMonth) {
-			Months months = Months.valueOf(givenMonth);
-			int date = 0;
-			switch (months) {
-				case January:
-					date = 1;
-					break;
-				case February:
-					date = 2;
-					break;
-				case March:
-					date = 3;
-					break;
-				case April:
-					date = 4;
-					break;
-				case May:
-					date = 5;
-					break;
-				case June:
-					date = 6;
-					break;
-				case July:
-					date = 1;
-					break;
-				case August:
-					date = 1;
-					break;
-				case September:
-					date = 1;
-					break;
-				case October:
-					date = 1;
-					break;
-				case November:
-					date = 1;
-					break;
-				case December:
-					date = 1;
-					break;
-				default:
-					date = 0;
-					break;
-			}
-			return date;
 
+			return total;
+		}
+
+	public static int getDifferenceYears(String firstDay, String lastDay) throws ParseException {
+		SimpleDateFormat format = new SimpleDateFormat
+		String date1 = firstDay;
+		String date2 = lastDay;
+		Date newDate1 = format.parse(date1);
+		Date newDate2 = format.parse(date2);
+		Calendar a = getTheCalendar(newDate1);
+		Calendar b = getTheCalendar(newDate2);
+		int diff = b.get(Calendar.YEAR) - a.get(Calendar.YEAR);
+		if(a.get(Calendar.MONTH) >
+
+
+		private static class DateConversion {
+
+			public DateConversion(Months months) {
+			}
+
+			public static String convertDate(String date) {
+				String[] extractMonth = date.split(",");
+				String givenMonth = extractMonth[0];
+				int monthDate = whichMonth(givenMonth);
+				String actualDate = monthDate + "/" + extractMonth[1];
+				return actualDate;
+			}
+
+			public static int whichMonth(String givenMonth) {
+				Months months = Months.valueOf(givenMonth);
+				int date = 0;
+				switch (months) {
+					case January:
+						date = 1;
+						break;
+					case February:
+						date = 2;
+						break;
+					case March:
+						date = 3;
+						break;
+					case April:
+						date = 4;
+						break;
+					case May:
+						date = 5;
+						break;
+					case June:
+						date = 6;
+						break;
+					case July:
+						date = 1;
+						break;
+					case August:
+						date = 1;
+						break;
+					case September:
+						date = 1;
+						break;
+					case October:
+						date = 1;
+						break;
+					case November:
+						date = 1;
+						break;
+					case December:
+						date = 1;
+						break;
+					default:
+						date = 0;
+						break;
+				}
+				return date;
+
+			}
 		}
 	}
 }
+	
